@@ -1,13 +1,26 @@
 {
     "version": 2,
+    "buildCommand": "cd frontend && npm install && npm run build",
+    "outputDirectory": "frontend/dist",
+    "installCommand": "cd frontend && npm install && cd ../backend && npm install",
+    "framework": null,
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "/backend/server.js"
+            "destination": "/api/server.js"
         },
         {
             "source": "/health",
-            "destination": "/backend/server.js"
+            "destination": "/api/server.js"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
-    ]
+    ],
+    "functions": {
+        "api/server.js": {
+            "runtime": "nodejs18.x"
+        }
+    }
 }
